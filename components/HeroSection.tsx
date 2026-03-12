@@ -58,13 +58,19 @@ export default function HeroSection() {
         </div>
         
         <ul className="nav-menu">
-          {['Home', 'About us', 'Event', 'Team', 'Contact'].map((item) => (
-            <li key={item}>
+          {[
+            { name: 'Home', href: '#home' },
+            { name: 'About us', href: '#about-us' },
+            { name: 'Event', href: '#event' },
+            { name: 'Team', href: '/team' },
+            { name: 'Contact', href: '/contact' }
+          ].map((item) => (
+            <li key={item.name}>
               <a
-                href={`#${item.toLowerCase().replace(' ', '-')}`}
+                href={item.href}
                 className="nav-link"
               >
-                {item}
+                {item.name}
                 <span className="nav-underline" />
               </a>
             </li>
