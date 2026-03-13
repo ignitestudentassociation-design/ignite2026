@@ -1,49 +1,30 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import './HeroSection.css'
-import { useEffect, useRef } from 'react'
 import Header from './Header'
 
 export default function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
-      
-      const { clientX, clientY } = e
-      const { innerWidth, innerHeight } = window
-      
-      const xPos = (clientX / innerWidth - 0.5) * 20
-      const yPos = (clientY / innerHeight - 0.5) * 20
-      
-      containerRef.current.style.transform = `perspective(1000px) rotateY(${xPos}deg) rotateX(${-yPos}deg)`
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    setIsLoaded(true)
   }, [])
 
   return (
-    <div className="hero-container" ref={containerRef}>
-      {/* 3D Background Effect */}
-      <div className="hero-background">
-        <div className="background-3d">
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-          <div className="particle"></div>
-        </div>
-        <div className="gradient-orb orb-1"></div>
-        <div className="gradient-orb orb-2"></div>
-        <div className="gradient-orb orb-3"></div>
+    <div className="hero-container">
+      {/* Background Image */}
+      <div className="hero-background-image">
+        <Image
+          src="/images/herobackground.png"
+          alt="Hero Background"
+          fill
+          priority
+          quality={100}
+          className="background-img"
+        />
+        <div className="background-overlay"></div>
       </div>
 
       {/* Navigation */}
@@ -51,21 +32,26 @@ export default function HeroSection() {
 
       {/* Hero Content */}
       <div className="hero-content">
-        {/* Main Title with Glow Effect */}
-        <h1 className="hero-title">
-          <span className="title-text">IGNITE</span>
+        {/* Team IGNITE Presents */}
+        <div className={`hero-subtitle ${isLoaded ? 'animate' : ''}`}>
+          Team IGNITE Presents
+        </div>
+
+        {/* IGNITION 2026 */}
+        <h1 className={`hero-title ${isLoaded ? 'animate' : ''}`}>
+          IGNITION 2026
         </h1>
 
         {/* Buttons */}
-        <div className="button-container">
+        <div className={`button-container ${isLoaded ? 'animate' : ''}`}>
           <button className="btn btn-primary">
             <span className="btn-text">Explore Events</span>
-            <div className="btn-overlay" />
+            <div className="btn-shine"></div>
           </button>
           
           <button className="btn btn-secondary">
             <span className="btn-text">Know More</span>
-            <div className="btn-fill" />
+            <div className="btn-fill"></div>
           </button>
         </div>
 
