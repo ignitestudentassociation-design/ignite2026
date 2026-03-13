@@ -42,6 +42,37 @@ export default function HeroSection() {
           IGNITION 2026
         </h1>
 
+        {/* Sponsors Section */}
+        <div className={`sponsors-section ${isLoaded ? 'animate' : ''}`}>
+          <h3 className="sponsors-heading">Sponsors</h3>
+          <div className="sponsors-logos">
+            <div className="sponsor-logo">
+              <Image
+                src="/images/sponser.png"
+                alt="Sponsor"
+                width={120}
+                height={120}
+              />
+            </div>
+            <div className="sponsor-logo">
+              <Image
+                src="/images/sponser.png"
+                alt="Sponsor"
+                width={120}
+                height={120}
+              />
+            </div>
+            <div className="sponsor-logo">
+              <Image
+                src="/images/sponser.png"
+                alt="Sponsor"
+                width={120}
+                height={120}
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Buttons */}
         <div className={`button-container ${isLoaded ? 'animate' : ''}`}>
           <button className="btn btn-primary">

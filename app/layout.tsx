@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import CustomCursor from '@/components/CustomCursor'
+import SoundEffects from '@/components/SoundEffects'
 
 export const metadata: Metadata = {
   title: 'Ignite - Spark Your Passion',
@@ -13,7 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <CustomCursor />
+        <SoundEffects />
+        {children}
+      </body>
     </html>
   )
 }
