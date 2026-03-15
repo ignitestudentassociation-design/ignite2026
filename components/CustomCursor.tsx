@@ -13,7 +13,10 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
-      const isInteractive = target.tagName === 'A' || target.tagName === 'BUTTON' || target.closest('a') || target.closest('button')
+      const isInteractive = target.tagName === 'A' || 
+                           target.tagName === 'BUTTON' || 
+                           target.closest('a') !== null || 
+                           target.closest('button') !== null
       setIsHovering(isInteractive)
     }
 
