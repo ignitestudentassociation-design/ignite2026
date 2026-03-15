@@ -75,6 +75,8 @@
   margin: 0;
   padding: 0;
   flex-wrap: wrap;
+  visibility: visible;
+  opacity: 1;
 }
 
 .header-menu li {
@@ -111,6 +113,27 @@
 
 .menu-overlay {
   display: none;
+}
+
+/* Ensure menu is always visible on desktop */
+@media (min-width: 769px) {
+  .header-menu {
+    display: flex !important;
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    background: transparent !important;
+    flex-direction: row !important;
+    gap: 2rem !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    right: auto !important;
+  }
+  
+  .hamburger {
+    display: none !important;
+  }
 }
 
 /* Responsive */
