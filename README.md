@@ -1,8 +1,23 @@
-# IGNITE Frontend
+# IGNITE Website
 
-A TypeScript React application matching the IGNITE organization design.
+A Next.js website for the IGNITE organization with React components integration.
 
-## Setup
+## Features
+
+- Next.js 14 with TypeScript
+- React components for events, gallery, and registration
+- Responsive design with Tailwind CSS and custom styling
+- Event management system with registration
+- Gallery with auto-carousel functionality
+- About page with organization information
+
+## Color Scheme
+
+- Gold Gradient: `#F5C870` to `#B07A15`
+- Dark Background: `#161b22`
+- Accent Gold: `#D4A574`
+
+## Setup Instructions
 
 1. Install dependencies:
 ```bash
@@ -10,58 +25,32 @@ npm install
 ```
 
 2. Add your images to the `public/images/` folder:
-   - `public/images/logo.png` - Your IGNITE logo
-   - `public/images/team-photo.jpg` - Your team/family photo
+   - `IMG_0773.png` - Team/event photos
+   - `ig_logo.png` - IGNITE logo
+   - `Frame 55.png` - Additional images
 
-3. Run development server:
+3. Run the development server:
 ```bash
 npm run dev
 ```
 
-4. Build for production:
-```bash
-npm run build
-```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Project Structure
 
 ```
+├── app/                 # Next.js app directory
+│   ├── about/
+│   ├── event-details/
+│   ├── contact/
+│   └── team/
+├── components/          # Shared React components
+├── src/                 # Legacy React components (to be migrated)
 ├── public/
-│   └── images/          # Add logo.png and team-photo.jpg here
-├── src/
-│   ├── components/
-│   │   ├── Header.tsx   # Navigation header
-│   │   └── Header.css
-│   ├── pages/
-│   │   ├── About.tsx    # Main about page
-│   │   └── About.css
-│   ├── App.tsx          # Main app with routing
-│   ├── App.css
-│   ├── main.tsx
-│   └── index.css
+│   └── images/
 └── package.json
 ```
 
-## Features
-
-- Dark theme with gold (#d4a574) accents matching IGNITE branding
-- Sticky navigation header with hover effects
-- Hero section with organization description
-- Family/team photo section with overlay text
-- "What is Ignite" informational section
-- Three vision cards with hover animations
-- Fully responsive design
-- TypeScript for type safety
-- React Router for navigation
-
-## Design Details
-
-- Background: #1a1f26 (dark blue-gray)
-- Accent color: #d4a574 (gold)
-- Text colors: #fff (white), #b0b0b0 (light gray)
-- Card backgrounds: #0f1419 (darker shade)
-- Border colors: #3a3a3a, #8b7355 (brown-gold for image frame)
-
 ## Development
 
-The app runs on http://localhost:5173/ by default.
+The app runs on http://localhost:3000/ by default with Next.js.
