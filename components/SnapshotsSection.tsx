@@ -4,14 +4,13 @@ import Image from 'next/image';
 
 export default function SnapshotsSection() {
   const snapshots = [
-    '/images/snapshot1.jpeg',
-    '/images/snapshot2.jpeg',
-    '/images/snapshot3.jpeg',
-    '/images/snapshot1.jpeg',
-    '/images/snapshot2.jpeg',
-    '/images/snapshot3.jpeg',
-  ];
+  { type: "video", src: "/images/vid1.mp4" },
+  { type: "video", src: "/images/vid2.mp4" },
+  { type: "video", src: "/images/vid3.mp4" },
+  { type: "video", src: "/images/vid4.mp4" },
 
+
+];
   return (
     <section className="py-16 px-4 bg-gray-1000 overflow-hidden">
       <style jsx>{`
@@ -50,17 +49,28 @@ export default function SnapshotsSection() {
             <div
               key={index}
               className="flex-shrink-0 mx-4"
-              style={{ width: '400px', height: '300px' }}
+              style={{ width: '400px', height: '380px' }}
             >
               <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-yellow-400 via-yellow-500 to-orange-500 p-1">
                 <div className="w-full h-full rounded-3xl overflow-hidden">
-                  <Image
-                    src={snapshot}
-                    alt={`Snapshot ${(index % snapshots.length) + 1}`}
-                    width={400}
-                    height={300}
-                    className="object-cover w-full h-full"
-                  />
+                 {snapshot.type === "image" ? (
+  <Image
+    src={snapshot.src}
+    alt={`Snapshot ${(index % snapshots.length) + 1}`}
+    width={400}
+    height={300}
+    className="object-cover w-full h-full"
+  />
+) : (
+  <video
+    src={snapshot.src}
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="object-cover w-full h-full"
+  />
+)}
                 </div>
               </div>
             </div>
