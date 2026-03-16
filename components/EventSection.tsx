@@ -24,20 +24,14 @@ export default function EventSection() {
 
       const response = await fetch(
         "https://ignitecore-three.vercel.app/api/v1/events/",
-        {
-          cache: "no-store"
-        }
+        { cache: "no-store" }
       )
-
-      console.log("API Response:", response)
 
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`)
       }
 
       const result = await response.json()
-
-      console.log("API Data:", result)
 
       if (result.success) {
         setEvents(result.data)
@@ -105,6 +99,9 @@ export default function EventSection() {
     )
   }
 
+  // Show only first 3 events
+  const displayedEvents = events.slice(0, 3)
+
   return (
     <section className="event-section">
 
@@ -127,9 +124,9 @@ export default function EventSection() {
         {/* Event Cards */}
         <div className="event-cards-container">
 
-          {events.length > 0 ? (
+          {displayedEvents.length > 0 ? (
 
-            events.map((event) => (
+            displayedEvents.map((event) => (
 
               <div key={event._id} className="event-card">
 
@@ -174,8 +171,6 @@ export default function EventSection() {
                     {event.content}
                   </p>
 
-                  {/* Tags */}
-
                   {event.tags && event.tags.length > 0 && (
 
                     <div className="event-tags">
@@ -195,44 +190,30 @@ export default function EventSection() {
                   <div className="event-details">
 
                     <div className="event-detail-item">
-
-                      <span>
-                        📅 {formatDate(event.eventdate)}
-                      </span>
-
+                      <span>📅 {formatDate(event.eventdate)}</span>
                     </div>
 
                     <div className="event-detail-item">
-
-                      <span>
-                        📍 {event.eventvenue || event.mode}
-                      </span>
-
+                      <span>📍 {event.eventvenue || event.mode}</span>
                     </div>
 
                     {event.amount > 0 && (
-
                       <div className="event-detail-item">
-
-                        <span>
-                          💰 ₹{event.amount}
-                        </span>
-
+                        <span>💰 ₹{event.amount}</span>
                       </div>
-
                     )}
 
                   </div>
 
-                  <button className="register-btn">
+                  <Link href={`/register?event=${event._id}`} className="register-btn">
                     Register Now
-                  </button>
+                  </Link>
 
-                  <Link
-                    href={`/event-details/${event._id}`}
-                    className="more-details-btn"
-                  >
-                    More Details →
+                  <Link href={`/event-details/${event._id}`} className="more-details-btn">
+                    More Details
+                    <svg className="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
                   </Link>
 
                 </div>
@@ -250,6 +231,18 @@ export default function EventSection() {
           )}
 
         </div>
+
+        {/* View All Events Button */}
+        {events.length > 3 && (
+          <div className="view-all-container">
+            <Link href="/events" className="view-all-btn">
+              View All Events
+              <svg className="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        )}
 
       </div>
 

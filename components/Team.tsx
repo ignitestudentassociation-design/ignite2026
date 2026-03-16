@@ -7,31 +7,31 @@ export default function Team() {
     {
       name: 'Harsh Bhamare',
       role: 'President',
-      image: '/images/president.png',
-      linkedin: 'https://www.linkedin.com/in/harsh-bhamare/',
-      instagram: 'https://www.instagram.com/harsh.bhamare22/',
+      image: '/images/person.png',
+      linkedin: 'https://linkedin.com/',
+      instagram: 'https://instagram.com/',
     },
     {
-      name: 'Rasika Mahulkar',
-      role: 'Vice-President',
-      image: '/images/rasika.png',
-      linkedin: 'https://www.linkedin.com/in/rasika-mahulkar-718a57286/',
-      instagram: 'https://www.instagram.com/rassi08/',
+      name: 'Harsh Bhamare',
+      role: 'President',
+      image: '/images/person.png',
+      linkedin: 'https://linkedin.com/',
+      instagram: 'https://instagram.com/',
     },
-    // {
-    //   name: 'Harsh Bhamare',
-    //   role: 'President',
-    //   image: '/images/person.png',
-    //   linkedin: 'https://linkedin.com/',
-    //   instagram: 'https://instagram.com/',
-    // },
-    // {
-    //   name: 'Harsh Bhamare',
-    //   role: 'President',
-    //   image: '/images/person.png',
-    //   linkedin: 'https://linkedin.com/',
-    //   instagram: 'https://instagram.com/',
-    // },
+    {
+      name: 'Harsh Bhamare',
+      role: 'President',
+      image: '/images/person.png',
+      linkedin: 'https://linkedin.com/',
+      instagram: 'https://instagram.com/',
+    },
+    {
+      name: 'Harsh Bhamare',
+      role: 'President',
+      image: '/images/person.png',
+      linkedin: 'https://linkedin.com/',
+      instagram: 'https://instagram.com/',
+    },
   ];
 
   return (
@@ -130,9 +130,9 @@ export default function Team() {
         </div>
 
         <div className="text-center">
-          <button className="border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors" style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700 }}>
+          <a href="/team" className="border-2 border-yellow-500 text-yellow-500 px-8 py-3 rounded-lg hover:bg-yellow-500 hover:text-white transition-colors inline-block" style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700 }}>
             View Full Team
-          </button>
+          </a>
         </div>
       </div>
     </section>
