@@ -9,11 +9,11 @@ import './event-details.css'
 
 export default function EventDetailsPage() {
   const params = useParams()
-  const eventId = params.eventid
+  const eventId = params.eventid as string
   
-  const [event, setEvent] = useState(null)
+  const [event, setEvent] = useState<any>(null)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
   const [imageError, setImageError] = useState(false)
 
   useEffect(() => {
@@ -39,7 +39,9 @@ export default function EventDetailsPage() {
         throw new Error(result.message || 'Failed to fetch event details')
       }
     } catch (err) {
-      setError(err.message)
+      // Properly handle unknown error type
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred'
+      setError(errorMessage)
       console.error('Error fetching event details:', err)
     } finally {
       setLoading(false)
@@ -47,7 +49,7 @@ export default function EventDetailsPage() {
   }
 
   // Format date function
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', {
       day: 'numeric',
@@ -57,7 +59,7 @@ export default function EventDetailsPage() {
   }
 
   // Format time function
-  const formatTime = (timeString) => {
+  const formatTime = (timeString: string) => {
     if (!timeString) return 'TBA'
     return timeString
   }
@@ -102,7 +104,7 @@ export default function EventDetailsPage() {
           <div className="event-info-left">
             <div className="event-badge">{event.mode || 'Offline'}</div>
             <h1 className="event-main-title">
-              {event.title.split(' ').map((word, index, array) => {
+              {event.title.split(' ').map((word: string, index: number, array: string[]) => {
                 if (index === array.length - 1) {
                   return <span key={index} className="highlight">{word}</span>
                 }
@@ -179,7 +181,7 @@ export default function EventDetailsPage() {
             </div>
 
             {event.amount > 0 && (
-              <div className="price-tag register-button">
+              <div className="price-tag">
                 <span className="price-label">Registration Fee:</span>
                 <span className="price-amount">₹{event.amount}</span>
               </div>
@@ -207,7 +209,7 @@ export default function EventDetailsPage() {
             </h2>
             {event.rules && event.rules.length > 0 ? (
               <ul className="rules-list">
-                {event.rules.map((rule, index) => (
+                {event.rules.map((rule: string, index: number) => (
                   <li key={index}>{rule}</li>
                 ))}
               </ul>
@@ -222,7 +224,7 @@ export default function EventDetailsPage() {
             </h2>
             {event.eventCordinators && event.eventCordinators.length > 0 ? (
               <div className="coordinators-grid">
-                {event.eventCordinators.map((coordinator, index) => (
+                {event.eventCordinators.map((coordinator: any, index: number) => (
                   <div key={index} className="coordinator-card">
                     <h3 className="coordinator-name">{coordinator.name || 'Coordinator'}</h3>
                     {coordinator.phone && (
@@ -244,7 +246,7 @@ export default function EventDetailsPage() {
               <div className="tags-section">
                 <h3 className="tags-heading">Event Tags</h3>
                 <div className="tags-container">
-                  {event.tags.map((tag, index) => (
+                  {event.tags.map((tag: string, index: number) => (
                     <span key={index} className="event-tag">#{tag}</span>
                   ))}
                 </div>

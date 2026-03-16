@@ -3,13 +3,14 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { Event } from '@/types/event'
 import './EventSection.css'
 
 export default function EventSection() {
-  const [events, setEvents] = useState([])
+  const [events, setEvents] = useState<Event[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [imageErrors, setImageErrors] = useState({})
+  const [error, setError] = useState<string | null>(null)
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     fetchEvents()
@@ -32,19 +33,20 @@ export default function EventSection() {
         throw new Error(result.message || 'Failed to fetch events')
       }
     } catch (err) {
-      setError(err.message)
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred'
+      setError(errorMessage)
       console.error('Error fetching events:', err)
     } finally {
       setLoading(false)
     }
   }
 
-  const handleImageError = (eventId) => {
+  const handleImageError = (eventId: string) => {
     setImageErrors(prev => ({ ...prev, [eventId]: true }))
   }
 
   // Format date function
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', {
       day: 'numeric',
@@ -130,7 +132,7 @@ export default function EventSection() {
                   {/* Tags */}
                   {event.tags && event.tags.length > 0 && (
                     <div className="event-tags">
-                      {event.tags.slice(0, 3).map((tag, index) => (
+                      {event.tags.slice(0, 3).map((tag: string, index: number) => (
                         <span key={index} className="event-tag">
                           #{tag}
                         </span>
