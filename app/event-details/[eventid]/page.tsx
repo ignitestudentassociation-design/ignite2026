@@ -16,6 +16,47 @@ export default function EventDetailsPage() {
   const [error, setError] = useState<string | null>(null)
   const [imageError, setImageError] = useState(false)
 
+  const fallbackCoordinators: { [key: string]: Array<{name: string, phone: string}> } = {
+    '69b7c782d21568ae765898f0': [
+      { name: 'Saurav Ambhore', phone: '+91 7666679366' },
+      { name: 'Sai Bembalge', phone: '+91 9823417001' }
+    ],
+    '69b7c84ad21568ae765898fb': [
+      { name: 'Vivek Parande', phone: '+91 7498823753' },
+      { name: 'Sandesh Ghule', phone: '+91 7499376437' }
+    ],
+    '69b7c85dd21568ae765898ff': [
+      { name: 'Vijay Nagargoje', phone: '+91 8767431818' },
+      { name: 'Rohit Mahadhane', phone: '+91 8459767146' }
+    ],
+    '69b7c835d21568ae765898f7': [
+      { name: 'Krish Pachote', phone: '+91 9552316663' },
+      { name: 'Pratik Kakde', phone: '+91 7507574789' },
+      { name: 'Jay Rindhe', phone: '+91 9322091325' }
+    ],
+    '69b7c83ed21568ae765898f9': [
+      { name: 'Krish Pachote', phone: '+91 9552316663' },
+      { name: 'Pratik Kakde', phone: '+91 7507574789' },
+      { name: 'Jay Rindhe', phone: '+91 9322091325' }
+    ],
+    '69b7c862d21568ae76589901': [
+      { name: 'Ajinkya Ghuge', phone: '+91 9604176810' },
+      { name: 'Shivam Ghante', phone: '+91 7972682325' }
+    ],
+    '69b7e5be6ce9af68a815e765': [
+      { name: 'Onkar Tanpure', phone: '+91 8208607665' },
+      { name: 'Pratik Tayde', phone: '+91 8983729462' }
+    ],
+    '69b8d02be6f29f7bdb8b9b83': [
+      { name: 'Onkar Tanpure', phone: '+91 8208607665' },
+      { name: 'Pratik Tayde', phone: '+91 8983729462' }
+    ],
+    '69b7c855d21568ae765898fd': [
+      { name: 'Ishan Chipate', phone: '+91 8446387738' },
+      { name: 'Ajay Wagh', phone: '+91 9356987231' }
+    ]
+  }
+
   useEffect(() => {
     if (eventId) {
       fetchEventDetails()
@@ -39,7 +80,6 @@ export default function EventDetailsPage() {
         throw new Error(result.message || 'Failed to fetch event details')
       }
     } catch (err) {
-      // Properly handle unknown error type
       const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred'
       setError(errorMessage)
       console.error('Error fetching event details:', err)
@@ -48,7 +88,6 @@ export default function EventDetailsPage() {
     }
   }
 
-  // Format date function
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', {
@@ -58,7 +97,6 @@ export default function EventDetailsPage() {
     })
   }
 
-  // Format time function
   const formatTime = (timeString: string) => {
     if (!timeString) return 'TBA'
     return timeString
@@ -94,6 +132,7 @@ export default function EventDetailsPage() {
     <>
       <Header />
       <div className="event-details-page">
+
         <div className="back-link">
           <Link href="/" className="back-button">
             ← Back to Events
@@ -103,6 +142,7 @@ export default function EventDetailsPage() {
         <div className="event-header-section">
           <div className="event-info-left">
             <div className="event-badge">{event.mode || 'Offline'}</div>
+
             <h1 className="event-main-title">
               {event.title.split(' ').map((word: string, index: number, array: string[]) => {
                 if (index === array.length - 1) {
@@ -111,49 +151,23 @@ export default function EventDetailsPage() {
                 return word + ' '
               })}
             </h1>
-            <p className="event-subtitle">
-              {event.content}
-            </p>
+
+            <p className="event-subtitle">{event.content}</p>
 
             <div className="event-meta-grid">
               <div className="meta-card">
-                <div className="meta-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="4" width="18" height="18" rx="2" stroke="#F3BD51" strokeWidth="2"/>
-                    <line x1="3" y1="9" x2="21" y2="9" stroke="#F3BD51" strokeWidth="2"/>
-                    <line x1="8" y1="2" x2="8" y2="6" stroke="#F3BD51" strokeWidth="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6" stroke="#F3BD51" strokeWidth="2"/>
-                  </svg>
-                </div>
                 <div className="meta-label">{formatDate(event.eventdate)}</div>
               </div>
 
               <div className="meta-card">
-                <div className="meta-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="9" stroke="#F3BD51" strokeWidth="2"/>
-                    <path d="M12 6v6l4 2" stroke="#F3BD51" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
                 <div className="meta-label">{formatTime(event.eventtime)}</div>
               </div>
 
               <div className="meta-card">
-                <div className="meta-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#F3BD51"/>
-                  </svg>
-                </div>
                 <div className="meta-label">{event.eventvenue || 'TBD'}</div>
               </div>
 
               <div className="meta-card">
-                <div className="meta-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="9" stroke="#F3BD51" strokeWidth="2"/>
-                    <path d="M12 6v6l4 2" stroke="#F3BD51" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                </div>
                 <div className="meta-label">{event.totalRegCount || 0} Registered</div>
               </div>
             </div>
@@ -172,18 +186,13 @@ export default function EventDetailsPage() {
                   className="event-poster-image"
                 />
               ) : (
-                <img
-                  src="/images/event.png"
-                  alt={event.title}
-                  className="event-poster-image"
-                />
+                <img src="/images/event.png" alt={event.title} className="event-poster-image" />
               )}
             </div>
 
             {event.amount > 0 && (
               <div className="price-tag">
-                <span className="price-label">Registration Fee:</span>
-                <span className="price-amount">₹{event.amount}</span>
+                <span>₹{event.amount}</span>
               </div>
             )}
 
@@ -194,76 +203,50 @@ export default function EventDetailsPage() {
         </div>
 
         <section className="about-event-section">
-          <h2 className="section-heading">
-            About The <span className="highlight">Event</span>
-          </h2>
-          <p className="event-description">
-            {event.content}
-          </p>
+          <h2>About Event</h2>
+          <p>{event.content}</p>
         </section>
 
         <div className="rules-coordinators-section">
+
           <section className="rules-section">
-            <h2 className="section-heading">
-              <span className="highlight">Rules</span> & <span className="highlight">Guidelines</span>
-            </h2>
-            {event.rules && event.rules.length > 0 ? (
-              <ul className="rules-list">
-                {event.rules.map((rule: string, index: number) => (
-                  <li key={index}>{rule}</li>
-                ))}
+            <h2>Rules</h2>
+            {event.rules?.length ? (
+              <ul>
+                {event.rules.map((rule: string, i: number) => <li key={i}>{rule}</li>)}
               </ul>
-            ) : (
-              <p className="no-content">No specific rules provided for this event.</p>
-            )}
+            ) : <p>No rules</p>}
           </section>
 
+          {/* ✅ FIXED HERE */}
           <section className="coordinators-section">
-            <h2 className="section-heading">
-              Event <span className="highlight">Co-ordinators</span>
-            </h2>
-            {event.eventCordinators && event.eventCordinators.length > 0 ? (
-              <div className="coordinators-grid">
-                {event.eventCordinators.map((coordinator: any, index: number) => (
-                  <div key={index} className="coordinator-card">
-                    <h3 className="coordinator-name">{coordinator.name || 'Coordinator'}</h3>
-                    {coordinator.phone && (
-                      <a href={`tel:${coordinator.phone}`} className="coordinator-contact">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="#F3BD51" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                        {coordinator.phone}
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="no-content">No coordinators listed for this event.</p>
-            )}
+            <h2>Event Coordinators</h2>
 
-            {event.tags && event.tags.length > 0 && (
-              <div className="tags-section">
-                <h3 className="tags-heading">Event Tags</h3>
-                <div className="tags-container">
-                  {event.tags.map((tag: string, index: number) => (
-                    <span key={index} className="event-tag">#{tag}</span>
+            {(() => {
+              const coordinators = (event.eventCordinators?.length)
+                ? event.eventCordinators
+                : fallbackCoordinators[eventId] || []
+
+              return coordinators.length ? (
+                <div className="coordinators-grid">
+                  {coordinators.map((c: any, i: number) => (
+                    <div key={i}>
+                      <h3>{c.name}</h3>
+                      {c.phone && (
+                        <a href={`tel:${c.phone.replace('+91 ', '')}`}>
+                          {c.phone}
+                        </a>
+                      )}
+                    </div>
                   ))}
                 </div>
-              </div>
-            )}
+              ) : <p>No coordinators</p>
+            })()}
+
           </section>
+
         </div>
 
-        <section className="cta-section">
-          <div className="cta-box">
-            <h3 className="cta-title">Ready to Join?</h3>
-            <p className="cta-subtitle">Secure your spot now — limited seats available!</p>
-            <Link href={`/register?event=${event._id}`} className="register-button">
-              Register Now
-            </Link>
-          </div>
-        </section>
       </div>
     </>
   )
