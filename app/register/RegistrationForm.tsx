@@ -822,3 +822,6 @@ export default function RegistrationForm() {
     </>
   )
 }
+
+
+
