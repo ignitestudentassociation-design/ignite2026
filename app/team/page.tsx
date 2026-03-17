@@ -116,7 +116,7 @@ export default function TeamPage() {
             <h3 className="team-group-title">Technical Team</h3>
             <div className="team-grid">
               <div className="team-member">
-                <Image src="/images/president.png" alt="Technical Team" width={150} height={150} className="member-image" />
+                <Image src="/images/ajay.jpeg" alt="Technical Team" width={150} height={150} className="member-image" />
                 <div className="member-info">
                   <h4 className="member-name">Ajay Wagh</h4>
                   <p className="member-designation">Lead</p>
@@ -272,7 +272,7 @@ export default function TeamPage() {
             <h3 className="team-group-title">Marketing Team</h3>
             <div className="team-grid">
               <div className="team-member">
-                <Image src="/images/shivam.png" alt="Marketing Team" width={150} height={150} className="member-image" />
+                <Image src="/images/shivam.jpeg" alt="Marketing Team" width={150} height={150} className="member-image" />
                 <div className="member-info">
                   <h4 className="member-name">Shivam Ghante</h4>
                   <p className="member-designation">Lead</p>
@@ -332,7 +332,7 @@ export default function TeamPage() {
                 </div>
               </div>
               <div className="team-member">
-                <Image src="/images/ketan.png" alt="Executive" width={200} height={200} className="member-image" />
+                <Image src="/images/ketanK.jpeg" alt="Executive" width={200} height={200} className="member-image" />
                 <div className="member-info">
                   <h4 className="member-name">Ketan Kale</h4>
                   <p className="member-designation">Executive</p>

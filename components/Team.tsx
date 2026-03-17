@@ -7,31 +7,18 @@ export default function Team() {
     {
       name: 'Harsh Bhamare',
       role: 'President',
-      image: '/images/person.png',
-      linkedin: 'https://linkedin.com/',
-      instagram: 'https://instagram.com/',
+      image: '/images/president.png',
+      linkedin: 'https://www.linkedin.com/in/harsh-bhamare/',
+      instagram: 'https://www.instagram.com/harsh.bhamare22/',
     },
     {
-      name: 'Harsh Bhamare',
+      name: 'Rasika Mahulkar',
       role: 'President',
-      image: '/images/person.png',
-      linkedin: 'https://linkedin.com/',
+      image: '/images/rasika.png',
+      linkedin: 'https://www.linkedin.com/in/rasika-mahulkar-718a57286/',
       instagram: 'https://instagram.com/',
     },
-    {
-      name: 'Harsh Bhamare',
-      role: 'President',
-      image: '/images/person.png',
-      linkedin: 'https://linkedin.com/',
-      instagram: 'https://instagram.com/',
-    },
-    {
-      name: 'Harsh Bhamare',
-      role: 'President',
-      image: '/images/person.png',
-      linkedin: 'https://linkedin.com/',
-      instagram: 'https://instagram.com/',
-    },
+    
   ];
 
   return (

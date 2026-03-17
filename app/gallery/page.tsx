@@ -10,8 +10,8 @@ export default function Gallery() {
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
+  // ✅ Fixed heroImages (removed HEAD issue)
   const heroImages = [
-<<<<<<< HEAD
     '/images/team4.jpeg',
     '/images/team5.jpeg',
     '/images/snapshot2.jpeg',
@@ -19,42 +19,35 @@ export default function Gallery() {
     '/images/IMG_4344.jpg',
   ]
 
+  // ✅ Merged both gallery arrays into one (removed duplicate)
   const galleryImages = [
     { id: 1, src: '/images/event1.jpeg', category: 'events', alt: 'Event Photo 1' },
     { id: 2, src: '/images/event2.jpeg', category: 'events', alt: 'Event Photo 2' },
     { id: 3, src: '/images/team1.png', category: 'team', alt: 'Team Photo 1' },
     { id: 4, src: '/images/team3.png', category: 'team', alt: 'Team Photo 2' },
-=======
-    '/images/gallery1.jpg',
-    '/images/gallery2.jpg',
-    '/images/gallery3.jpg',
-    '/images/gallery4.jpg',
-    '/images/gallery5.jpg',
-  ]
 
-  const galleryImages = [
-    { id: 1, src: '/images/gallery1.jpg', category: 'team', alt: 'IGNITE Team Photo 1' },
-    { id: 2, src: '/images/gallery2.jpg', category: 'team', alt: 'IGNITE Team Photo 2' },
-    { id: 3, src: '/images/gallery3.jpg', category: 'team', alt: 'IGNITE Team Photo 3' },
-    { id: 4, src: '/images/gallery4.jpg', category: 'events', alt: 'IGNITE Event Photo 1' },
-    { id: 5, src: '/images/gallery5.jpg', category: 'events', alt: 'IGNITE Event Photo 2' },
-    { id: 6, src: '/images/snapshot1.jpeg', category: 'events', alt: 'IGNITE Event Snapshot 1' },
-    { id: 7, src: '/images/snapshot2.jpeg', category: 'events', alt: 'IGNITE Event Snapshot 2' },
-    { id: 8, src: '/images/snapshot3.jpeg', category: 'events', alt: 'IGNITE Event Snapshot 3' },
->>>>>>> 03e5df014fea534fae57b7716db0ad92ec9ed728
+    // { id: 5, src: '/images/gallery1.jpg', category: 'team', alt: 'IGNITE Team Photo 1' },
+    // { id: 6, src: '/images/gallery2.jpg', category: 'team', alt: 'IGNITE Team Photo 2' },
+    // { id: 7, src: '/images/gallery3.jpg', category: 'team', alt: 'IGNITE Team Photo 3' },
+    // { id: 8, src: '/images/gallery4.jpg', category: 'events', alt: 'IGNITE Event Photo 1' },
+    // { id: 9, src: '/images/gallery5.jpg', category: 'events', alt: 'IGNITE Event Photo 2' },
+    // { id: 10, src: '/images/snapshot1.jpeg', category: 'events', alt: 'IGNITE Event Snapshot 1' },
+    // { id: 11, src: '/images/snapshot2.jpeg', category: 'events', alt: 'IGNITE Event Snapshot 2' },
+    // { id: 12, src: '/images/snapshot3.jpeg', category: 'events', alt: 'IGNITE Event Snapshot 3' },
   ]
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-    }, 4000) // 4 seconds wait time per image
+    }, 4000)
 
     return () => clearInterval(interval)
   }, [heroImages.length])
 
-  const filteredImages = activeFilter === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeFilter)
+  const filteredImages =
+    activeFilter === 'all'
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === activeFilter)
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index)
@@ -81,7 +74,7 @@ export default function Gallery() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!lightboxOpen) return
-      
+
       if (e.key === 'Escape') {
         closeLightbox()
       } else if (e.key === 'ArrowLeft') {
@@ -99,108 +92,111 @@ export default function Gallery() {
     <>
       <Header />
       <div className="gallery-page">
-      <section className="gallery-hero">
-        <h1 className="gallery-title">
-          <span className="highlight">The Glimpse</span> of IGNITE
-        </h1>
-        <p className="gallery-subtitle">
-          Snapshots from our events, workshops, and team moments.
-        </p>
+        <section className="gallery-hero">
+          <h1 className="gallery-title">
+            <span className="highlight">The Glimpse</span> of IGNITE
+          </h1>
+          <p className="gallery-subtitle">
+            Snapshots from our events, workshops, and team moments.
+          </p>
 
-        <div className="hero-image-container">
-          <div className="carousel-wrapper">
-            <div 
-              className="carousel-track"
-              style={{
-                transform: `translateX(-${currentSlide * 100}%)`,
-              }}
-            >
-              {heroImages.map((img, index) => (
-                <img 
+          <div className="hero-image-container">
+            <div className="carousel-wrapper">
+              <div
+                className="carousel-track"
+                style={{
+                  transform: `translateX(-${currentSlide * 100}%)`,
+                }}
+              >
+                {heroImages.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`IGNITE Team ${index + 1}`}
+                    className="hero-gallery-image"
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="image-dots">
+              {heroImages.map((_, index) => (
+                <span
                   key={index}
-                  src={img} 
-                  alt={`IGNITE Team ${index + 1}`} 
-                  className="hero-gallery-image"
+                  className={`dot ${index === currentSlide ? 'active' : ''}`}
+                  onClick={() => setCurrentSlide(index)}
                 />
               ))}
             </div>
           </div>
-          <div className="image-dots">
-            {heroImages.map((_, index) => (
-              <span 
-                key={index}
-                className={`dot ${index === currentSlide ? 'active' : ''}`}
-                onClick={() => setCurrentSlide(index)}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="gallery-filters">
-        <button 
-          className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
-          onClick={() => setActiveFilter('all')}
-        >
-          All
-        </button>
-        <button 
-          className={`filter-btn ${activeFilter === 'events' ? 'active' : ''}`}
-          onClick={() => setActiveFilter('events')}
-        >
-          Events
-        </button>
-        <button 
-          className={`filter-btn ${activeFilter === 'team' ? 'active' : ''}`}
-          onClick={() => setActiveFilter('team')}
-        >
-          Team
-        </button>
-      </section>
-
-      <section className="gallery-grid">
-        {filteredImages.map((image, index) => (
-          <div 
-            key={image.id} 
-            className="gallery-item"
-            onClick={() => openLightbox(index)}
+        <section className="gallery-filters">
+          <button
+            className={`filter-btn ${activeFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('all')}
           >
-            <img src={image.src} alt={image.alt} className="gallery-image" />
-          </div>
-        ))}
-      </section>
-
-      {/* Lightbox Modal */}
-      {lightboxOpen && (
-        <div className="lightbox" onClick={closeLightbox}>
-          <span className="close-lightbox" onClick={closeLightbox}>&times;</span>
-          <img 
-            src={filteredImages[lightboxIndex]?.src} 
-            alt={filteredImages[lightboxIndex]?.alt}
-            className="lightbox-image"
-            onClick={(e) => e.stopPropagation()}
-          />
-          <button 
-            className="lightbox-nav prev" 
-            onClick={(e) => {
-              e.stopPropagation()
-              navigateLightbox(-1)
-            }}
-          >
-            &#10094;
+            All
           </button>
-          <button 
-            className="lightbox-nav next"
-            onClick={(e) => {
-              e.stopPropagation()
-              navigateLightbox(1)
-            }}
+          <button
+            className={`filter-btn ${activeFilter === 'events' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('events')}
           >
-            &#10095;
+            Events
           </button>
-        </div>
-      )}
-    </div>
+          <button
+            className={`filter-btn ${activeFilter === 'team' ? 'active' : ''}`}
+            onClick={() => setActiveFilter('team')}
+          >
+            Team
+          </button>
+        </section>
+
+        <section className="gallery-grid">
+          {filteredImages.map((image, index) => (
+            <div
+              key={image.id}
+              className="gallery-item"
+              onClick={() => openLightbox(index)}
+            >
+              <img src={image.src} alt={image.alt} className="gallery-image" />
+            </div>
+          ))}
+        </section>
+
+        {lightboxOpen && (
+          <div className="lightbox" onClick={closeLightbox}>
+            <span className="close-lightbox">&times;</span>
+
+            <img
+              src={filteredImages[lightboxIndex]?.src}
+              alt={filteredImages[lightboxIndex]?.alt}
+              className="lightbox-image"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            <button
+              className="lightbox-nav prev"
+              onClick={(e) => {
+                e.stopPropagation()
+                navigateLightbox(-1)
+              }}
+            >
+              &#10094;
+            </button>
+
+            <button
+              className="lightbox-nav next"
+              onClick={(e) => {
+                e.stopPropagation()
+                navigateLightbox(1)
+              }}
+            >
+              &#10095;
+            </button>
+          </div>
+        )}
+      </div>
     </>
   )
 }

@@ -56,7 +56,7 @@ export default function HeroSection() {
             </div>
             <div className="sponsor-logo">
               <Image
-                src="/images/sponser.png"
+                src="/images/netleap logo.png"
                 alt="Sponsor"
                 width={120}
                 height={120}
@@ -64,7 +64,7 @@ export default function HeroSection() {
             </div>
             <div className="sponsor-logo">
               <Image
-                src="/images/sponser.png"
+                src="/images/sponsor2.png"
                 alt="Sponsor"
                 width={120}
                 height={120}

@@ -7,7 +7,8 @@ export default function SnapshotsSection() {
   { type: "video", src: "/images/vid1.mp4" },
   { type: "video", src: "/images/vid2.mp4" },
   { type: "video", src: "/images/vid3.mp4" },
-  { type: "video", src: "/images/vid4.mp4" },
+    { type: "video", src: "/images/vid4.mp4" },
+  { type: "video", src: "/images/vid5.mp4" },
 
 
 ];
