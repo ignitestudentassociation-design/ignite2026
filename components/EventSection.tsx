@@ -87,7 +87,9 @@ export default function EventSection() {
 
   return (
     <section className="event-section">
+
       <div className="event-container">
+
         {/* Title */}
         <h2 className="event-title">
           <span className="title-highlight">Upcoming</span> Events
@@ -95,11 +97,11 @@ export default function EventSection() {
 
         {/* Description */}
         <p className="event-description">
-          Ignite SA is a student community that boasts the most brilliant minds from our college. Comprising individuals
-          from diverse fields, including tech area, all members possess exceptional skills in their respective domains and
-          work in unison to make Ignite SA an exceptional entity. Our main objective is to create a space that nurtures
-          self-improvement and development for our students, and we proudly declare ourselves as a community that is
-          created, run, and dedicated to the students.
+          Ignite SA is a student community that boasts the most brilliant minds
+          from our college. Comprising individuals from diverse fields including
+          tech and design, all members possess exceptional skills in their
+          respective domains and work together to create meaningful student
+          experiences.
         </p>
 
         {/* Event Cards */}
@@ -199,6 +201,7 @@ export default function EventSection() {
           </div>
         )}
       </div>
+
     </section>
   )
 }
