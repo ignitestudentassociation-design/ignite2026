@@ -23,6 +23,10 @@ const eventData: { [key: string]: any } = {
       'Fastest and most accurate debugger wins',
       'Individual participation only',
       'Bring your own laptop with required compilers'
+    ],
+    coordinators: [
+      { name: 'Vijay Nagargoje', phone: '+91 8767431818' },
+      { name: 'Rohit Mahadhane', phone: '+91 8459767146' }
     ]
   },
   'promptx': {
@@ -41,6 +45,10 @@ const eventData: { [key: string]: any } = {
       'AI tools will be provided',
       'Individual participation',
       'Basic knowledge of AI prompting preferred'
+    ],
+    coordinators: [
+      { name: 'Vivek Parande', phone: '+91 7498823753' },
+      { name: 'Sandesh Ghule', phone: '+91 7499376437' }
     ]
   },
   'clashiq': {
@@ -59,6 +67,10 @@ const eventData: { [key: string]: any } = {
       'No electronic devices allowed',
       'Accuracy + Speed = Victory',
       'Highest scorer wins the competition'
+    ],
+    coordinators: [
+      { name: 'Ishan Chipate', phone: '+91 8446387738' },
+      { name: 'Ajay Wagh', phone: '+91 9356987231' }
     ]
   },
   'yuva-manthan': {
@@ -77,6 +89,10 @@ const eventData: { [key: string]: any } = {
       'Judged on content, confidence, clarity, presentation',
       'Most logical and impactful speaker wins',
       'Aggressive behavior leads to disqualification'
+    ],
+    coordinators: [
+      { name: 'Ajinkya Ghuge', phone: '+91 9604176810' },
+      { name: 'Shivam Ghante', phone: '+91 7972682325' }
     ]
   },
   'red-zone-challenge': {
@@ -95,6 +111,10 @@ const eventData: { [key: string]: any } = {
       'Safety gear will be provided',
       'Only the strongest team survives',
       'Fair play and sportsmanship required'
+    ],
+    coordinators: [
+      { name: 'Saurav Ambhore', phone: '+91 7666679366' },
+      { name: 'Sai Bembalge', phone: '+91 9823417001' }
     ]
   },
   'inspira': {
@@ -113,6 +133,10 @@ const eventData: { [key: string]: any } = {
       'Q&A session after each presentation',
       'Judged on innovation, feasibility, presentation',
       'Best idea takes the crown'
+    ],
+    coordinators: [
+      { name: 'Onkar Tanpure', phone: '+91 8208607665' },
+      { name: 'Pratik Tayde', phone: '+91 8983729462' }
     ]
   },
   'cinecraft': {
@@ -131,6 +155,10 @@ const eventData: { [key: string]: any } = {
       'Focus on creativity and storytelling',
       'Video length: 2-3 minutes maximum',
       'Most creative and impactful video wins'
+    ],
+    coordinators: [
+      { name: 'Ketan Kale', phone: '+91 8605388074' },
+      { name: 'Harshal Gondekar', phone: '+91 9022515887' }
     ]
   },
   'e-sports': {
@@ -149,6 +177,11 @@ const eventData: { [key: string]: any } = {
       'Own devices required',
       'Stable internet connection mandatory',
       'Last team standing wins'
+    ],
+    coordinators: [
+      { name: 'Krish Pachote', phone: '+91 9552316663' },
+      { name: 'Pratik Kakde', phone: '+91 7507574789' },
+      { name: 'Jay Rindhe', phone: '+91 9322091325' }
     ]
   }
 }
@@ -283,27 +316,20 @@ export default function EventDetails() {
 
         <section className="coordinators-section">
           <h2 className="section-heading">
-            Event <span className="highlight">Co-ordinators</span>
+            Event <span className="highlight">Coordinators</span>
           </h2>
           <div className="coordinators-grid">
-            <div className="coordinator-card">
-              <h3 className="coordinator-name">Saurav Ambhore</h3>
-              <a href="tel:7666679366" className="coordinator-contact">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="#F3BD51" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                7666679366
-              </a>
-            </div>
-            <div className="coordinator-card">
-              <h3 className="coordinator-name">Saurav Ambhore</h3>
-              <a href="tel:7666679366" className="coordinator-contact">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="#F3BD51" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                7666679366
-              </a>
-            </div>
+            {event.coordinators.map((coordinator: any, index: number) => (
+              <div key={index} className="coordinator-card">
+                <h3 className="coordinator-name">{coordinator.name}</h3>
+                <a href={`tel:${coordinator.phone.replace('+91 ', '')}`} className="coordinator-contact">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" stroke="#F3BD51" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  {coordinator.phone}
+                </a>
+              </div>
+            ))}
           </div>
         </section>
       </div>

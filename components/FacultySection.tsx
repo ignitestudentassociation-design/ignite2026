@@ -11,13 +11,13 @@ export default function FacultySection() {
     },
     {
       name: 'Dr. Dipa Dharmadhikari',
-      designation: 'Professor, ESTD',
+      designation: 'Faculty Coordinator, IGNITE SA',
       image: '/images/dipa.png',
     },
   ];
 
   return (
-    <section className="py-16 px-4 bg-gray-1000">
+    <section className="py-16 px-4" style={{ backgroundColor: '#1a1f25' }}>
       <div className="max-w-6xl mx-auto">
         <div className="border border-yellow-600 rounded-3xl p-12">
           <h2 
@@ -25,7 +25,7 @@ export default function FacultySection() {
             style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700 }}
           >
             <span className="text-yellow-500">Faculty</span>{' '}
-            <span className="text-white">Cordinator</span>
+            <span className="text-white">Coordinator</span>
           </h2>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">

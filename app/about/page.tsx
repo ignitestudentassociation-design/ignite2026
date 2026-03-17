@@ -117,42 +117,34 @@ export default function AboutPage() {
           Our <span className="highlight">Inspiration</span>
         </h2>
         <div className="video-grid">
-          <a 
-            href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID_1" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="video-card"
-          >
+          <div className="video-card">
             <div className="video-thumbnail">
               <Image 
-                src="https://img.youtube.com/vi/YOUR_VIDEO_ID_1/maxresdefault.jpg" 
-                alt="Video 1"
+                src="/images/YT-Animation.jpeg" 
+                alt="HOD ESTD"
                 width={640}
                 height={360}
+                className="inspiration-image"
               />
             </div>
             <div className="video-info">
               <h3 className="video-title">HOD, ESTD<br />Dr. Kavita Bhosale</h3>
             </div>
-          </a>
-          <a 
-            href="https://www.youtube.com/watch?v=YOUR_VIDEO_ID_2" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="video-card"
-          >
+          </div>
+          <div className="video-card">
             <div className="video-thumbnail">
               <Image 
-                src="https://img.youtube.com/vi/YOUR_VIDEO_ID_2/maxresdefault.jpg" 
-                alt="Video 2"
+                src="/images/YT-Animation.jpeg" 
+                alt="Faculty Coordinator"
                 width={640}
                 height={360}
+                className="inspiration-image"
               />
             </div>
             <div className="video-info">
-              <h3 className="video-title">Faculty Co-ordinator<br />Dr. Dipa Dharmadhikari</h3>
+              <h3 className="video-title">Faculty Coordinator<br />Dr. Dipa Dharmadhikari</h3>
             </div>
-          </a>
+          </div>
         </div>
       </section>
     </div>

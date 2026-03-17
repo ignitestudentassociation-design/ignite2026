@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: 'ignitecore-three.vercel.app',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        pathname: '/**',
+      },
       // Add any other image domains here
     ],
   },

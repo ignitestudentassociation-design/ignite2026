@@ -389,6 +389,12 @@
   object-fit: cover;
 }
 
+.inspiration-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .video-info {
   padding: clamp(1.5rem, 3vw, 2rem);
   text-align: center;
