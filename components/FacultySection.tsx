@@ -25,7 +25,7 @@ export default function FacultySection() {
             style={{ fontFamily: 'Oswald, sans-serif', fontWeight: 700 }}
           >
             <span className="text-yellow-500">Faculty</span>{' '}
-            <span className="text-white">Cordinator</span>
+            <span className="text-white">Coordinator</span>
           </h2>
 
           <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">

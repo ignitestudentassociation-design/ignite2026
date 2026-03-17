@@ -9,8 +9,6 @@ export default function SnapshotsSection() {
   { type: "video", src: "/images/vid3.mp4" },
     { type: "video", src: "/images/vid4.mp4" },
   { type: "video", src: "/images/vid5.mp4" },
-
-
 ];
   return (
     <section className="py-16 px-4 bg-gray-1000 overflow-hidden">

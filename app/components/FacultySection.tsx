@@ -6,12 +6,12 @@ export default function FacultySection() {
   const facultyMembers = [
     {
       name: 'Dr. Dipa Dharmadhikari',
-      designation: 'Professor, ESTD',
+      designation: 'Faculty Coordinator, IGNITE SA',
       image: '/images/person.png',
     },
     {
       name: 'Dr. Dipa Dharmadhikari',
-      designation: 'Professor, ESTD',
+      designation: 'Faculty Coordinator, IGNITE SA',
       image: '/images/person.png',
     },
   ];
