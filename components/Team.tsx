@@ -7,7 +7,7 @@ export default function Team() {
     {
       name: 'Harsh Bhamare',
       role: 'President',
-      image: '/images/harshal.png',
+      image: '/images/president.png',
       linkedin: 'https://www.linkedin.com/in/harsh-bhamare/',
       instagram: 'https://www.instagram.com/harsh.bhamare22/',
     },
@@ -16,20 +16,6 @@ export default function Team() {
       role: 'Vice President',
       image: '/images/rasika.png',
       linkedin: 'https://www.linkedin.com/in/rasika-mahulkar-718a57286/',
-      instagram: 'https://instagram.com/',
-    },
-    {
-      name: 'Ajay Wagh',
-      role: 'Tech Lead',
-      image: '/images/ajay.jpeg',
-      linkedin: 'https://linkedin.com/',
-      instagram: 'https://instagram.com/',
-    },
-    {
-      name: 'Pratik Kakde',
-      role: 'Design Lead',
-      image: '/images/pratik.png',
-      linkedin: 'https://linkedin.com/',
       instagram: 'https://instagram.com/',
     },
   ];
