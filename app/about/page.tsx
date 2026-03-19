@@ -128,7 +128,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="video-info">
-              <h3 className="video-title">HOD, ESTD<br />Dr. Kavita Bhosale</h3>
+              <h3 className="video-title">HOD, ESTD<br />Dr. Kavita Bhosle</h3>
             </div>
           </div>
           <div className="video-card">
