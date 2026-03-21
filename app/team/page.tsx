@@ -123,7 +123,7 @@ export default function TeamPage() {
                 </div>
               </div>
               <div className="team-member">
-                <Image src="/images/ajinkyaG.jpeg" alt="Technical Team" width={150} height={150} className="member-image" />
+                <Image src="/images/ajinkya new.jpeg" alt="Technical Team" width={150} height={150} className="member-image" />
                 <div className="member-info">
                   <h4 className="member-name">Ajinkya Ghuge</h4>
                   <p className="member-designation">Co-Lead</p>
